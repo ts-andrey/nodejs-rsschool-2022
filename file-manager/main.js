@@ -23,7 +23,6 @@ process.stdin.on('data', data => {
     if (tempPath.length > __dirname.length) {
       curDirPath = tempPath;
     }
-    console.log(curDirPath);
   }
   if (arr[0] === 'cd') {
     curDirPath = arr.slice(1)[0];
@@ -34,7 +33,6 @@ process.stdin.on('data', data => {
     command: arr[0],
     rest: arr.slice(1),
   };
-  console.log(dataObj);
   manager(dataObj);
   console.log(`${curDirMessage}\n`);
 });
