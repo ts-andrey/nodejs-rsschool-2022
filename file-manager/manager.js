@@ -1,8 +1,8 @@
 import { compress, decompress } from './compressor.js';
 import * as err from './error.js';
 import * as fm from './fileManager.js';
-import {calculateHash} from './hash.js';
-import {} from './infoProvider.js';
+import { calculateHash } from './hash.js';
+import { getSystemInfo } from './infoProvider.js';
 
 export function manager(dataObj) {
   switch (dataObj.command) {
@@ -34,10 +34,11 @@ export function manager(dataObj) {
       break;
 
     case 'os':
+      getSystemInfo(dataObj);
       break;
 
     case 'hash':
-      calculateHash(dataObj)
+      calculateHash(dataObj);
       break;
 
     case 'compress':
