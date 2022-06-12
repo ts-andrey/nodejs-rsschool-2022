@@ -1,7 +1,7 @@
 import { compress, decompress } from './compressor.js';
 import * as err from './error.js';
 import * as fm from './fileManager.js';
-import {} from './hash.js';
+import {calculateHash} from './hash.js';
 import {} from './infoProvider.js';
 
 export function manager(dataObj) {
@@ -37,6 +37,7 @@ export function manager(dataObj) {
       break;
 
     case 'hash':
+      calculateHash(dataObj)
       break;
 
     case 'compress':
