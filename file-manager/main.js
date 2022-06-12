@@ -25,6 +25,9 @@ process.stdin.on('data', data => {
     }
     console.log(curDirPath);
   }
+  if (arr[0] === 'cd') {
+    curDirPath = arr.slice(1)[0];
+  }
   const dataObj = {
     root: __dirname,
     curDir: curDirPath,
