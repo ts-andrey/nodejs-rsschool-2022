@@ -1,15 +1,15 @@
-import {} from './compressor.js';
+import { compress, decompress } from './compressor.js';
 import * as err from './error.js';
 import * as fm from './fileManager.js';
-import { } from './hash.js';
-import { } from './infoProvider.js';
+import {} from './hash.js';
+import {} from './infoProvider.js';
 
 export function manager(dataObj) {
   switch (dataObj.command) {
     case 'up':
       break;
     case 'cd':
-      break;     
+      break;
     case 'ls':
       fm.list(dataObj);
       break;
@@ -40,8 +40,10 @@ export function manager(dataObj) {
       break;
 
     case 'compress':
+      compress(dataObj);
       break;
     case 'decompress':
+      decompress(dataObj);
       break;
 
     default:
