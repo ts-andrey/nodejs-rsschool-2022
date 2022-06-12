@@ -1,11 +1,11 @@
-import { join } from 'path';
+import path from 'path';
 import { fileURLToPath } from 'url';
 
 import { argv } from 'process';
 
 import { manager } from './manager.js';
 
-const __dirname = join(fileURLToPath(import.meta.url), '../');
+const __dirname = path.join(fileURLToPath(import.meta.url), '../');
 
 let curDirPath = __dirname;
 const curDirMessage = `You are currently in ${curDirPath}`;
@@ -18,6 +18,13 @@ process.stdin.setEncoding('utf-8');
 process.stdin.on('data', data => {
   let arr = data.split(' ');
   arr = arr.map(el => el.trim());
+  if (arr[0] === 'up') {
+    const tempPath = path.join(curDirPath, '..');
+    if (tempPath.length > __dirname.length) {
+      curDirPath = tempPath;
+    }
+    console.log(curDirPath);
+  }
   const dataObj = {
     root: __dirname,
     curDir: curDirPath,
