@@ -16,8 +16,11 @@ export const getUser = (userId: string) => {
   return users.filter(user => user.id === userId)[0];
 };
 
-export const updateUser = (updatedUser: IUser) => {
-  const userIndex = users.findIndex(user => user.id === updatedUser.id);
+export const updateUser = (userId: string, userInfo: IUserData) => {
+  const updatedUser: IUser = userInfo;
+  updatedUser.id = userId;
+
+  const userIndex = users.findIndex(user => user.id === userId);
   if (userIndex !== -1) {
     users[userIndex] = updatedUser;
     return updatedUser;
