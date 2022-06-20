@@ -1,9 +1,9 @@
-export function badRequest(resp: any, message: string) {
-  resp.statusCode = 400;
-  resp.setHeader('Content-Type', 'json');
+export function badRequest(resp: any, errorCode: number, message: string) {
+  resp.writeHead(errorCode, { 'Content-Type': 'json' });
   resp.write(
     JSON.stringify({
       message,
     })
   );
 }
+

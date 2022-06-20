@@ -5,7 +5,8 @@ import { v4 as uuid } from 'uuid';
 export const createUser = (user: IUserData) => {
   const newUser: IUser = user;
   newUser.id = uuid();
-  return users.push(newUser);
+  users.push(newUser);
+  return newUser;
 };
 
 export const getAllUsers = () => {
@@ -32,7 +33,7 @@ export const updateUser = (userId: string, userInfo: IUserData) => {
 export const deleteUser = (userId: string) => {
   const userIndex = users.findIndex(user => user.id === userId);
   if (userIndex !== -1) {
-    return users.splice(userIndex, 1);
+    return users.splice(userIndex, 1)[0];
   } else {
     return undefined;
   }
